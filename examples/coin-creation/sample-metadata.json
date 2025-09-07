@@ -1,0 +1,21 @@
+{
+    "name": "Sample Creator Coin",
+    "symbol": "SAMPLE",
+    "description": "This is a sample creator coin on the Zora Protocol",
+    "image": "https://i.imgur.com/ZfJKxpH.png",
+    "external_url": "https://zora.co",
+    "attributes": [
+        {
+            "trait_type": "Category",
+            "value": "Creator Token"
+        },
+        {
+            "trait_type": "Platform",
+            "value": "Zora"
+        },
+        {
+            "trait_type": "Network",
+            "value": "Base Sepolia"
+        }
+    ]
+}

@@ -1,0 +1,18 @@
+/* RainbowKit Custom Styles */
+:root {
+  --rk-colors-accentColor: #00FF00;
+  --rk-colors-connectButtonBackground: rgba(0, 255, 0, 0.1);
+  --rk-colors-connectButtonBackgroundError: rgba(255, 51, 102, 0.1);
+  --rk-colors-connectButtonInnerBackground: rgba(0, 255, 0, 0.2);
+  --rk-colors-connectButtonText: #00FF00;
+  --rk-colors-connectButtonTextError: #FF3366;
+  --rk-colors-modalBackground: #111111;
+  --rk-colors-modalBorder: rgba(255, 255, 255, 0.1);
+  --rk-colors-modalText: #FFFFFF;
+  --rk-colors-modalTextSecondary: rgba(255, 255, 255, 0.7);
+}
+
+#rainbow-button {
+  display: flex;
+  align-items: center;
+}

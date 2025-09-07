@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --zora-brand-black: #000000;
+  --zora-brand-white: #FFFFFF;
+  --zora-accent: #808080;
+  --zora-fg-color: #111827;
+  --zora-bg-color: #F9FAFB;
+  --zora-border-color: #E5E7EB;
+}
+
+.dark {
+  --zora-fg-color: #F9FAFB;
+  --zora-bg-color: #111827;
+  --zora-border-color: #374151;
+}
+
+@layer base {
+  body {
+    @apply antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+@layer components {
+  .zora-button {
+    @apply px-4 py-2 rounded-full font-medium transition-all duration-200;
+  }
+
+  .zora-button-primary {
+    @apply zora-button bg-black text-white hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200;
+  }
+
+  .zora-button-secondary {
+    @apply zora-button border border-gray-200 hover:border-gray-300 dark:border-gray-700 dark:hover:border-gray-600;
+  }
+
+  .zora-input {
+    @apply w-full px-4 py-2 rounded-xl border border-gray-200 bg-white focus:ring-2 focus:ring-black focus:border-transparent dark:bg-gray-800 dark:border-gray-700 dark:focus:ring-white;
+  }
+
+  .zora-card {
+    @apply p-6 rounded-2xl border border-gray-200 bg-white dark:bg-gray-800 dark:border-gray-700;
+  }
+
+  .zora-gradient {
+    @apply bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500;
+  }
+
+  .zora-text-gradient {
+    @apply zora-gradient bg-clip-text text-transparent;
+  }
+}
+
+/* Custom Animations */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100 dark:bg-gray-800;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 dark:bg-gray-700 rounded-full;
+}
+
+/* RainbowKit Custom Styles */
+[data-rk] {
+  --rk-colors-accentColor: var(--zora-brand-black) !important;
+  --rk-colors-connectButtonBackground: var(--zora-brand-black) !important;
+  --rk-colors-connectButtonText: var(--zora-brand-white) !important;
+}
+
+.dark [data-rk] {
+  --rk-colors-accentColor: var(--zora-brand-white) !important;
+  --rk-colors-connectButtonBackground: var(--zora-brand-white) !important;
+  --rk-colors-connectButtonText: var(--zora-brand-black) !important;
+}

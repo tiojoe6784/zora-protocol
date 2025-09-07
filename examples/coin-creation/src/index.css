@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --zora-brand-black: #000000;
+  --zora-brand-white: #FFFFFF;
+  --zora-accent: #808080;
+  --zora-fg-color: #111827;
+  --zora-bg-color: #F9FAFB;
+  --zora-border-color: #E5E7EB;
+}
+
+.dark {
+  --zora-fg-color: #F9FAFB;
+  --zora-bg-color: #111827;
+  --zora-border-color: #374151;
+}
+
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  body {
+    @apply antialiased bg-[var(--zora-bg-color)] text-[var(--zora-fg-color)];
+  }
+}
+
+@layer components {
+  .zora-button {
+    @apply px-4 py-2 rounded-full font-medium transition-all duration-200;
+  }
+
+  .zora-button-primary {
+    @apply zora-button bg-black text-white hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200;
+  }
+
+  .zora-button-secondary {
+    @apply zora-button border border-gray-200 hover:border-gray-300 dark:border-gray-700 dark:hover:border-gray-600;
+  }
+
+  .zora-input {
+    @apply w-full px-4 py-2 rounded-xl border border-gray-200 bg-white focus:ring-2 focus:ring-black focus:border-transparent dark:bg-gray-800 dark:border-gray-700 dark:focus:ring-white;
+  }
+
+  .zora-card {
+    @apply p-6 rounded-2xl border border-gray-200 bg-white dark:bg-gray-800 dark:border-gray-700;
+  }
+}
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}

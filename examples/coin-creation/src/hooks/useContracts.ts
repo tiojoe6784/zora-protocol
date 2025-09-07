@@ -96,7 +96,7 @@ export function useCreateCoin() {
   const createPoolConfig = () => {
     // ABI encode the parameters according to CreatorCoin.t.sol test format
     const poolConfigParams = {
-      version: "0x0000000000000000000000000000000000000000000000000000000000000001", // Version 1
+      version: 4, // Correct version for DOPPLER_MULTICURVE_UNI_V4_POOL_VERSION
       currency: "0x000000000000000000000000000000000000800A", // ZORA token on Base Sepolia
       tickLower: [-138000],
       tickUpper: [81000],
@@ -106,7 +106,7 @@ export function useCreateCoin() {
 
     // Encode following Solidity's abi.encode format
     const encoded = ethers.utils.defaultAbiCoder.encode(
-      ["bytes32", "address", "int24[]", "int24[]", "uint16[]", "uint256[]"],
+      ["uint8", "address", "int24[]", "int24[]", "uint16[]", "uint256[]"],
       [
         poolConfigParams.version,
         poolConfigParams.currency,
@@ -135,18 +135,30 @@ export function useCreateCoin() {
         )
       );
 
-      await createCreatorCoin?.({
-        args: [
-          address as `0x${string}`, // payoutRecipient
-          [address] as readonly `0x${string}`[], // owners array - current user is the owner
-          metadata, // metadata URI
-          name,  // token name
-          symbol, // token symbol
-          poolConfig as `0x${string}`, // encoded pool configuration
-          "0x0000000000000000000000000000000000000000" as `0x${string}`, // no platform referrer
-          salt as `0x${string}` // deterministic salt
-        ],
-      });
+      try {
+        await createCreatorCoin?.({
+          args: [
+            address as `0x${string}`, // payoutRecipient
+            [address] as readonly `0x${string}`[], // owners array - current user is the owner
+            metadata, // metadata URI
+            name,  // token name
+            symbol, // token symbol
+            poolConfig as `0x${string}`, // encoded pool configuration
+            "0x0000000000000000000000000000000000000000" as `0x${string}`, // no platform referrer
+            salt as `0x${string}` // deterministic salt
+          ],
+        });
+      } catch (err: any) {
+        // Log full error object and revert data if available
+        console.error("CreatorCoin deployment failed:", err);
+        if (err?.error?.data) {
+          console.error("Revert data:", err.error.data);
+        }
+        if (err?.reason) {
+          console.error("Revert reason:", err.reason);
+        }
+        throw err;
+      }
     },
     createContentCoin: (name: string, symbol: string, metadata: string, creatorCoin: string) =>
       createContentCoin?.({

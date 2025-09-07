@@ -56,5 +56,9 @@
       "typescript": "^5.8.3",
       "tsup": "^8.4.0"
     }
+  },
+  "dependencies": {
+    "@zoralabs/coins-sdk": "^0.3.0",
+    "ethers": "^6.15.0"
   }
 }

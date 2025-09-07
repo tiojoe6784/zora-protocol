@@ -15,6 +15,11 @@ fs_permissions = [
   { access = "read", path = "../shared-contracts/chainConfigs" },
   { access = "read", path = "../shared-contracts/deterministicConfig" }
 ]
+remappings = [
+  "lib/=lib/",
+  "@uniswap/v4-core/=node_modules/@uniswap/v4-core/",
+  "permit2/=lib/permit2/src/"
+]
 
 [profile.ci.fuzz]
 runs = 100
